@@ -141,8 +141,11 @@ one above, and has not been taken.
 
 ## Relationship to upstream
 
-No upstream functionality is removed or altered for supported architectures. The
-`FT_GRID_CONSTANT` guard is intended to be upstreamable as-is; see `BACKLOG.md`.
+No upstream functionality is removed or altered for supported architectures —
+`sm_70+` codegen is byte-for-byte what upstream produces.
+
+This fork is maintained independently. There is no plan to file an upstream PR, and
+no expectation of tracking upstream releases on any particular schedule.
 
 Upstream: <https://github.com/FlashML-org/FreeToken> —
 FreeToken is Apache 2.0, and so is this fork. Credit for the engine belongs to the
