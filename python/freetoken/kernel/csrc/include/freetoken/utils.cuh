@@ -142,3 +142,20 @@ private:
 };
 
 } // namespace host
+
+// --- FreeToken-Pascal -------------------------------------------------------
+// `__grid_constant__` is only accepted for compute_70 (Volta) or later; nvcc
+// hard-errors on sm_60/sm_61. It is a pure optimization hint -- it lets the
+// compiler keep a large kernel parameter in constant memory rather than
+// copying it into local storage. Dropping it on pre-Volta targets changes no
+// semantics, and is what allows Pascal cards (Tesla P100, GTX 10xx) to build
+// these kernels at all. sm_70+ is unaffected and still gets the annotation.
+//
+// Upstream already guards __nanosleep the same way (see fast_index_copy.cuh),
+// so this follows an existing convention in the codebase.
+#if defined(__CUDA_ARCH__) && (__CUDA_ARCH__ < 700)
+#  define FT_GRID_CONSTANT
+#else
+#  define FT_GRID_CONSTANT __grid_constant__
+#endif
+// ---------------------------------------------------------------------------
