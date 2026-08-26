@@ -6,9 +6,6 @@ Every item here has a matching issue, and vice versa.
 
 ## Open
 
-- [ ] Upstream the `FT_GRID_CONSTANT` guard as a PR to `FlashML-org/FreeToken` — it is
-      additive, follows their existing `__nanosleep` convention, and costs sm_70+ nothing
-      ([#1](https://github.com/CryptoJones/FreeToken-Pascal/issues/1))
 - [ ] File an upstream issue on `apache-tvm-ffi`: `_get_cuda_target()` reads only
       `nvidia-smi`'s **first** GPU and ignores `CUDA_VISIBLE_DEVICES`, silently breaking
       mixed-generation machines
@@ -34,6 +31,12 @@ Every item here has a matching issue, and vice versa.
 - [x] Confirm `torch==2.11.0+cu126` restores `sm_60` to the arch list
 - [x] Identify `TVM_FFI_CUDA_ARCH_LIST` as the required override on mixed-GPU hosts
 - [x] Capture `ft bench bw` ceilings for both the RTX 3060 and the P100
+
+## Won't do
+
+- [x] ~~Upstream the `FT_GRID_CONSTANT` guard to `FlashML-org/FreeToken`~~ — declined.
+      This fork stands on its own; no upstream PR will be filed.
+      ([#1](https://github.com/CryptoJones/FreeToken-Pascal/issues/1), closed)
 
 ---
 
