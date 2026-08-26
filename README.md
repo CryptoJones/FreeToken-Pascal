@@ -1,3 +1,26 @@
+<p align="center"><em>Proudly Made in Nebraska. Go Big Red! 🌽 <a href="https://xkcd.com/2347/">https://xkcd.com/2347/</a></em></p>
+
+> ### FreeToken-Pascal
+>
+> This is a **fork of [FlashML-org/FreeToken](https://github.com/FlashML-org/FreeToken)**
+> that adds pre-Volta GPU support: **Tesla P100 (sm_60)** and **GTX 10xx (sm_61)**.
+>
+> Upstream's JIT kernels annotate four kernel parameters with `__grid_constant__`, which
+> nvcc rejects below compute_70 — and because those are the PCIe-gather kernels, the whole
+> expert-offload path fails to build on Pascal. This fork guards the annotation behind
+> `FT_GRID_CONSTANT`, so pre-Volta compiles while **sm_70+ keeps the hint unchanged**.
+>
+> Nothing is removed or altered for architectures upstream already supports.
+>
+> **See [`PASCAL.md`](PASCAL.md)** for the full rationale, the required
+> `torch==2.11.0+cu126` / `TVM_FFI_CUDA_ARCH_LIST` setup, measured bandwidth numbers, and
+> an important caveat about PCIe slot placement mattering more than VRAM.
+>
+> All credit for FreeToken itself belongs to its authors (Yang et al., UC Berkeley).
+> Apache 2.0, same as upstream.
+
+---
+
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/FlashML-org/FreeToken/main/assets/freetoken-logo-dark.svg">

@@ -485,7 +485,7 @@ struct MultiIndexCopyParams {
 
 template <typename IdType, std::size_t kNumThreads, std::size_t kBlocksPerBank>
 __global__ __launch_bounds__(kNumThreads) void fast_index_copy_multi(
-    const __grid_constant__ MultiIndexCopyParams p
+    const FT_GRID_CONSTANT MultiIndexCopyParams p
 ) {
     const int b = static_cast<int>(blockIdx.x / kBlocksPerBank);
     if (b >= p.num_banks) {
